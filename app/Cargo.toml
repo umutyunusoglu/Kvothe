@@ -1,0 +1,52 @@
+# app/Cargo.toml
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+members = ["felurian", "uverture"]
+resolver = "2"
+
+[workspace.dependencies]
+ringbuf = "0.4"
+anyhow = "1.0.103"
+
+[dependencies]
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+felurian = { path = "felurian" }
+uverture = { path = "uverture" }
+anyhow.workspace = true
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+crossterm = "0.29.0"
+ratatui = { version = "0.30.1", features = ["crossterm"] }
+ringbuf = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+ratatui = { version = "0.30.1", default-features = false }
+ratzilla = "0.3.1"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3.81", features = [
+    "MediaDevices",
+    "MediaStreamConstraints",
+    "MediaStream",
+    "MediaStreamAudioSourceNode",
+    "MediaTrackConstraints",
+    "AudioContext",
+    "AudioContextOptions",
+    "AudioWorklet",
+    "AudioWorkletNode",
+    "AudioWorkletNodeOptions",
+    "MessageEvent",
+    "MessagePort",
+    "Navigator",
+    "Window",
+] }
+console_error_panic_hook = "0.1"
+# ratzilla pulls in ratatui-core's "layout-cache" feature, which needs a
+# registered critical-section impl to link on wasm32-unknown-unknown.
+critical-section = { version = "1.2", features = ["std"] }

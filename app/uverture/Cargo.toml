@@ -1,0 +1,15 @@
+[package]
+name = "uverture"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+num = "0.4.3"
+num-complex = "0.4.6"
+plotters = "0.3.7"
+rustfft = "6.4.1"
+strum = { version = "0.28.0", features = ["derive"] }
+ringbuf = { workspace = true }
+
+[dev-dependencies]
+rand = "0.10.1"
