@@ -26,6 +26,10 @@ Felurian is a utility module that handles microphone input stream handling. It u
 
 Kvothe handles the application flow and user interface of the application. Kvothe is designed as a TUI (Terminal User Interface) application using ratatui but it supports web builds with ratzilla as well. Kvothe processes the input stream provided by Felurian and detects the notes and chords using Uverture in real time. Lastly it visualizes the data stream and its contents in a user interface.
 
-### Use of AI
+## Usage
+You can try Kvothe at https://www.kvothe.net . 
+You should give microphone permission for Kvothe to work.
+
+## Use of AI
 
 During the development of Kvothe, one of the main principles was to use human expertise for coding as much as possible. The only usage of AI coding was for the hosting of the project with Vercel and WASM porting of the Felurian module for hosting Kvothe for web interfaces.
